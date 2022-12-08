@@ -3,7 +3,7 @@ public class Main {
         Car lada = new Car("Lada ", "Granta, ", 1.7, " желтая, ", 2015,
                 " Россия");
         lada.cars();
-        Car audi = new Car("Audi ", "A8 50 L TDI quattro ", 3.0, " черная, ",
+        Car audi = new Car("Audi ", "A8 50 L TDI quattro ", -3.0, " черная, ",
                 2020, " Германия");
         audi.cars();
 
@@ -16,7 +16,7 @@ public class Main {
         kia.cars();
 
         Car hyundai = new Car("Hyundai ", "Avante, ", 1.7, " оранжевая, ",
-                2016, " Южная Корея");
+                -55, " Южная Корея");
         hyundai.cars();
 
     }
