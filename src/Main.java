@@ -1,36 +1,33 @@
 import animals.Cat;
+import transport.Car;
 
 public class Main {
     public static void main(String[] args) {
         Car lada = new Car("Lada ", "Granta, ", 1.7, " желтая, ", 2015,
-                " Россия", " автомат ", " седан", А778КК777, 5,
-                "зима");
+                " Россия");
 
         Car audi = new Car("Audi ", "A8 50 L TDI quattro ", -3.0, " черная, ",
-                2020, " Германия", "автомат ", " седан, ", "Е879ВК71",
-                5, "зима");
+                2020, " Германия");
 
 
         Car bmv = new Car("BMW ", "Z 8, ", 3.0, " черная, ", 2021,
-                " Германия", "автомат", " седан ", " А255КК55 ", 5,
-                " зима");
+                " Германия");
 
 
         Car kia = new Car("Kia ", "Sportage 4-го поколения, ", 2.4, " красная, ",
-                2015, " Южная Корея", "робот", "хечбек", "Т997ТТ99",
-                5, "лето");
+                2015, " Южная Корея");
 
         Car hyundai = new Car("Hyundai ", "Avante, ", 1.7, " оранжевая, ",
-                -55, " Южная Корея", "механическая", "седан", "Н556АА17",
-                5, "лето");
-        System.out.println(lada.);
+                -55, " Южная Корея");
+        System.out.println(lada);
+        System.out.println(audi);
+        System.out.println(bmv);
+        System.out.println(kia);
+        System.out.println(hyundai);
 
 
 
-
-
-
-        Cat myrzik = new Cat("Мурзик");
+        /*Cat myrzik = new Cat("Мурзик");
         myrzik.getAge();
         myrzik.meow();
 
@@ -41,7 +38,7 @@ public class Main {
         myrzik.addFriend (begemot);
 
         System.out.println(" У кота "+myrzik.getName()+" "+myrzik.getFriends().length+" друзей");
-        //myrzik.friends[]meow;
+        //myrzik.friends[]meow;*/
     }
 
 }
