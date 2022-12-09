@@ -1,6 +1,6 @@
 package transport;
 
-import java.util.Objects;
+import java.time.LocalDate;
 
 public class Car {
     private final String brand;
@@ -15,6 +15,69 @@ public class Car {
     private String registrtionNumber;
     private final int numberOfSeats;
     private boolean typeOfRubber;
+    private Key key;
+    private Insurance insurance;
+
+    public Car(String brand,
+               String model,
+               int year, String country,
+               String bodyType,
+               int numberOfSeats, String transmission) {
+        if (model == null) {
+            this.model = "default";
+        } else {
+            this.model = model;
+        }
+        if (engineVolume == 0) {
+            this.engineVolume = 1.5;
+        } else {
+            this.engineVolume = engineVolume;
+        }
+        this.engineVolume = engineVolume;
+        if (color == null) {
+            this.color = "белый";
+        } else {
+            this.color = color;
+        }
+        if (year <= 0) {
+            this.year = 2000;
+        } else {
+            this.year = year;
+        }
+        if (brand == null) {
+            this.brand = "default";
+        } else {
+            this.brand = brand;
+        }
+        if (country == null) {
+            this.country = "default";
+        } else {
+            this.country = country;
+        }
+        if (bodyType == null) {
+            this.bodyType = "default";
+        } else {
+            this.bodyType = bodyType;
+        }
+        if (numberOfSeats <= 0) {
+            this.numberOfSeats = Math.abs(numberOfSeats);
+        } else {
+            this.numberOfSeats = numberOfSeats;
+        }
+        if (key==null){
+            this.key=new Key();
+        }else {
+            this.key=key;
+        }
+        this.transmission="МКПП";
+        this.registrtionNumber="х000хх000";
+        this.typeOfRubber=true;
+        if (insurance==null){
+            this.insurance=new Insurance();
+        }else {
+            this.insurance = insurance;
+        }
+    }
 
     public String getBrand() {
         return brand;
@@ -56,96 +119,137 @@ public class Car {
         return numberOfSeats;
     }
 
-    public boolean getTypeOfRubber() {
+    public boolean isTypeOfRubber() {
         return typeOfRubber;
     }
 
+    public Key getKey() {
+        return key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
     public void setEngineVolume(double engineVolume) {
-        if (engineVolume <= 0) {
-            this.engineVolume = 1.5;
-        } else {
-            this.engineVolume = engineVolume;
-        }
+        this.engineVolume = engineVolume;
     }
 
     public void setColor(String color) {
-        if (color == null || color.isBlank()) {
-            this.color = "Белый";
-        } else {
-            this.color = color;
-        }
+        this.color = color;
     }
 
     public void setTransmission(String transmission) {
-        if (transmission == null || transmission.isBlank()) {
-            this.transmission = "Тип трансмиссии не указан";
-        } else {
+        if (transmission==null){
+            this.transmission="МККП";
+        }else {
             this.transmission = transmission;
         }
     }
 
     public void setRegistrtionNumber(String registrtionNumber) {
-        this.registrtionNumber = registrtionNumber;
+        if (registrtionNumber==null){
+            this.registrtionNumber="х000хх000";
+        }else {
+            this.registrtionNumber = registrtionNumber;
+        }
     }
 
     public void setTypeOfRubber(boolean typeOfRubber) {
         this.typeOfRubber = typeOfRubber;
     }
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country) {
-        if (brand == null) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+    public void changeTyers(){
+        typeOfRubber=!typeOfRubber;
+    }
+    public boolean isCorrectedReg(){
+        if (registrtionNumber.length()!=9){
+            return false;
         }
-        if (model == null) {
-            this.model = "default";
-        } else {
-            this.model = model;
+        char [] chars=registrtionNumber.toCharArray();
+        if (!Character.isAlphabetic(chars[0])||!Character.isAlphabetic(chars[4])||!Character.isAlphabetic(chars[5])){
+            return false;
         }
-        setEngineVolume(engineVolume);
-        setColor(color);
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
+        if (!Character.isDigit(chars[1])||!Character.isDigit(chars[2])||!Character.isDigit(chars[3])||
+                !Character.isDigit(chars[6])||!Character.isDigit(chars[7])||!Character.isDigit(chars[8])){
+            return false;
         }
-        this.country = Objects.requireNonNullElse(country, "default");
-        setTransmission(transmission);
-        this.bodyType = "Седан";
-        this.numberOfSeats = 5;
-        this.typeOfRubber = true;
-        this.registrtionNumber = "А111АА222";
+        return true;
     }
+    public static class Key{
+        private final boolean remoteEngineStart;
+        private final boolean keylessAccess;
 
-    public void changeTyres() {
-        typeOfRubber = !typeOfRubber;
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
+            this.remoteEngineStart = remoteEngineStart;
+            this.keylessAccess = keylessAccess;
+        }
+        public Key() {
+            this(false,false);
+        }
+
+        public boolean isRemoteEngineStart() {
+            return remoteEngineStart;
+        }
+
+        public boolean isKeylessAccess() {
+            return keylessAccess;
+        }
     }
+    public static class Insurance{
+        private final LocalDate expireDate;
+        private final double cost;
+        private final String number;
 
-    public boolean isValidNumber() {
-        boolean result = true;
-        result = result && registrtionNumber.length() == 9;
-        result = result && Character.isLetter(registrtionNumber.charAt(0));
-        result = result && Character.isDigit(registrtionNumber.charAt(1));
-        result = result && Character.isDigit(registrtionNumber.charAt(2));
-        result = result && Character.isDigit(registrtionNumber.charAt(3));
-        result = result && Character.isLetter(registrtionNumber.charAt(4));
-        result = result && Character.isLetter(registrtionNumber.charAt(5));
-        result = result && Character.isDigit(registrtionNumber.charAt(6));
-        result = result && Character.isDigit(registrtionNumber.charAt(7));
-        result = result && Character.isDigit(registrtionNumber.charAt(8));
-        return result;
+        public Insurance(LocalDate expireDate, double cost, String number) {
+            if (expireDate==null){
+                this.expireDate=LocalDate.now().plusDays(365);
+            }else {
+                this.expireDate = expireDate;
+            }
+            this.cost = cost;
+            if (number==null){
+                this.number="000_000_000";
+            }else {
+                this.number = number;
+            }
+        }
+        public Insurance(){
+            this(null,0,null);
+        }
+
+        public LocalDate getExpireDate() {
+            return expireDate;
+        }
+
+        public double getCost() {
+            return cost;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+        public void checkExpireDate(){
+            if (expireDate.isBefore(LocalDate.now())||expireDate.isEqual(LocalDate.now())){
+                System.out.println("Нужно срочно ехать оформлять новую страховку");
+            }
+        }
+
+        public void checkNumber(){
+            if (number.length()!=9){
+                System.out.println("Номер страховки некорректный!");
+            }
+        }
     }
-
-    public String toString() {
-        return "Автомобиль " +
-                "Бренд'" + brand + '\'' +
-                ", Модель " + model + '\'' +
-                ", объем двигателя " + engineVolume +
-                ", цвет'" + color + '\'' +
-                ", год выпуска " + year +
-                ", страна производитель'" + country + '\'' +
-                '}';
-    }
-
 }
+
+
+
+
