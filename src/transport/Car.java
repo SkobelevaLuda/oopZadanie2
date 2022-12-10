@@ -2,13 +2,8 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
 
     private String transmission;
     private final String bodyType;
@@ -18,41 +13,20 @@ public class Car {
     private Key key;
     private Insurance insurance;
 
+
     public Car(String brand,
                String model,
                int year, String country,
                String bodyType,
                int numberOfSeats, String transmission) {
-        if (model == null) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        if (engineVolume == 0) {
-            this.engineVolume = 1.5;
-        } else {
+        super(brand, model, year, country,bodyType,numberOfSeats, transmission);{
+
+            if (engineVolume == 0) {
+                this.engineVolume = 1.5;
+            } else {
+                this.engineVolume = engineVolume;
+            }
             this.engineVolume = engineVolume;
-        }
-        this.engineVolume = engineVolume;
-        if (color == null) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
-        }
-        if (brand == null) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (country == null) {
-            this.country = "default";
-        } else {
-            this.country = country;
         }
         if (bodyType == null) {
             this.bodyType = "default";
@@ -64,191 +38,171 @@ public class Car {
         } else {
             this.numberOfSeats = numberOfSeats;
         }
-        if (key==null){
-            this.key=new Key();
-        }else {
-            this.key=key;
+        if (key == null) {
+            this.key = new Key();
+        } else {
+            this.key = key;
         }
-        this.transmission="МКПП";
-        this.registrtionNumber="х000хх000";
-        this.typeOfRubber=true;
-        if (insurance==null){
-            this.insurance=new Insurance();
-        }else {
+        this.transmission = "МКПП";
+        this.registrtionNumber = "х000хх000";
+        this.typeOfRubber = true;
+        if (insurance == null) {
+            this.insurance = new Insurance();
+        } else {
             this.insurance = insurance;
         }
     }
 
-    public String getBrand() {
-        return brand;
-    }
 
-    public String getModel() {
-        return model;
-    }
-
-    public double getEngineVolume() {
-        return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public String getRegistrtionNumber() {
-        return registrtionNumber;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public boolean isTypeOfRubber() {
-        return typeOfRubber;
-    }
-
-    public Key getKey() {
-        return key;
-    }
-
-    public Insurance getInsurance() {
-        return insurance;
-    }
-
-    public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void setTransmission(String transmission) {
-        if (transmission==null){
-            this.transmission="МККП";
-        }else {
-            this.transmission = transmission;
-        }
-    }
-
-    public void setRegistrtionNumber(String registrtionNumber) {
-        if (registrtionNumber==null){
-            this.registrtionNumber="х000хх000";
-        }else {
-            this.registrtionNumber = registrtionNumber;
-        }
-    }
-
-    public void setTypeOfRubber(boolean typeOfRubber) {
-        this.typeOfRubber = typeOfRubber;
-    }
-
-    public void setKey(Key key) {
-        this.key = key;
-    }
-
-    public void setInsurance(Insurance insurance) {
-        this.insurance = insurance;
-    }
-    public void changeTyers(){
-        typeOfRubber=!typeOfRubber;
-    }
-    public boolean isCorrectedReg(){
-        if (registrtionNumber.length()!=9){
-            return false;
-        }
-        char [] chars=registrtionNumber.toCharArray();
-        if (!Character.isAlphabetic(chars[0])||!Character.isAlphabetic(chars[4])||!Character.isAlphabetic(chars[5])){
-            return false;
-        }
-        if (!Character.isDigit(chars[1])||!Character.isDigit(chars[2])||!Character.isDigit(chars[3])||
-                !Character.isDigit(chars[6])||!Character.isDigit(chars[7])||!Character.isDigit(chars[8])){
-            return false;
-        }
-        return true;
-    }
-    public static class Key{
-        private final boolean remoteEngineStart;
-        private final boolean keylessAccess;
-
-        public Key(boolean remoteEngineStart, boolean keylessAccess) {
-            this.remoteEngineStart = remoteEngineStart;
-            this.keylessAccess = keylessAccess;
-        }
-        public Key() {
-            this(false,false);
+        public double getEngineVolume () {
+            return engineVolume;
         }
 
-        public boolean isRemoteEngineStart() {
-            return remoteEngineStart;
+        public String getTransmission () {
+            return transmission;
         }
 
-        public boolean isKeylessAccess() {
-            return keylessAccess;
-        }
-    }
-    public static class Insurance{
-        private final LocalDate expireDate;
-        private final double cost;
-        private final String number;
-
-        public Insurance(LocalDate expireDate, double cost, String number) {
-            if (expireDate==null){
-                this.expireDate=LocalDate.now().plusDays(365);
-            }else {
-                this.expireDate = expireDate;
-            }
-            this.cost = cost;
-            if (number==null){
-                this.number="000_000_000";
-            }else {
-                this.number = number;
-            }
-        }
-        public Insurance(){
-            this(null,0,null);
+        public String getBodyType () {
+            return bodyType;
         }
 
-        public LocalDate getExpireDate() {
-            return expireDate;
+        public String getRegistrtionNumber () {
+            return registrtionNumber;
         }
 
-        public double getCost() {
-            return cost;
+        public int getNumberOfSeats () {
+            return numberOfSeats;
         }
 
-        public String getNumber() {
-            return number;
+        public boolean isTypeOfRubber () {
+            return typeOfRubber;
         }
-        public void checkExpireDate(){
-            if (expireDate.isBefore(LocalDate.now())||expireDate.isEqual(LocalDate.now())){
-                System.out.println("Нужно срочно ехать оформлять новую страховку");
+
+        public Key getKey () {
+            return key;
+        }
+
+        public Insurance getInsurance () {
+            return insurance;
+        }
+
+        public void setEngineVolume ( double engineVolume){
+            this.engineVolume = engineVolume;
+        }
+
+        public void setTransmission (String transmission){
+            if (transmission == null) {
+                this.transmission = "МККП";
+            } else {
+                this.transmission = transmission;
             }
         }
 
-        public void checkNumber(){
-            if (number.length()!=9){
-                System.out.println("Номер страховки некорректный!");
+        public void setRegistrtionNumber (String registrtionNumber){
+            if (registrtionNumber == null) {
+                this.registrtionNumber = "х000хх000";
+            } else {
+                this.registrtionNumber = registrtionNumber;
+            }
+        }
+
+        public void setTypeOfRubber ( boolean typeOfRubber){
+            this.typeOfRubber = typeOfRubber;
+        }
+
+        public void setKey (Key key){
+            this.key = key;
+        }
+
+        public void setInsurance (Insurance insurance){
+            this.insurance = insurance;
+        }
+        public void changeTyers () {
+            typeOfRubber = !typeOfRubber;
+        }
+        public boolean isCorrectedReg () {
+            if (registrtionNumber.length() != 9) {
+                return false;
+            }
+            char[] chars = registrtionNumber.toCharArray();
+            if (!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4]) || !Character.isAlphabetic(chars[5])) {
+                return false;
+            }
+            if (!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) || !Character.isDigit(chars[3]) ||
+                    !Character.isDigit(chars[6]) || !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])) {
+                return false;
+            }
+            return true;
+        }
+        public static class Key {
+            private final boolean remoteEngineStart;
+            private final boolean keylessAccess;
+
+            public Key(boolean remoteEngineStart, boolean keylessAccess) {
+                this.remoteEngineStart = remoteEngineStart;
+                this.keylessAccess = keylessAccess;
+            }
+
+            public Key() {
+                this(false, false);
+            }
+
+            public boolean isRemoteEngineStart() {
+                return remoteEngineStart;
+            }
+
+            public boolean isKeylessAccess() {
+                return keylessAccess;
+            }
+        }
+        class Insurance {
+            private final LocalDate expireDate;
+            private final double cost;
+            private final String number;
+
+            public Insurance(LocalDate expireDate, double cost, String number) {
+                if (expireDate == null) {
+                    this.expireDate = LocalDate.now().plusDays(365);
+                } else {
+                    this.expireDate = expireDate;
+                }
+                this.cost = cost;
+                if (number == null) {
+                    this.number = "000_000_000";
+                } else {
+                    this.number = number;
+                }
+            }
+
+            public Insurance() {
+                this(null, 0, null);
+            }
+
+            public LocalDate getExpireDate() {
+                return expireDate;
+            }
+
+            public double getCost() {
+                return cost;
+            }
+
+            public String getNumber() {
+                return number;
+            }
+
+            public void checkExpireDate() {
+                if (expireDate.isBefore(LocalDate.now()) || expireDate.isEqual(LocalDate.now())) {
+                    System.out.println("Нужно срочно ехать оформлять новую страховку");
+                }
+            }
+
+            public void checkNumber() {
+                if (number.length() != 9) {
+                    System.out.println("Номер страховки некорректный!");
+                }
             }
         }
     }
-}
 
 
 

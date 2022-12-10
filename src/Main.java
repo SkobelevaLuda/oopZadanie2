@@ -37,8 +37,8 @@ public class Main {
                 ", количество мест"+ car.getNumberOfSeats()+", "+(car.isTypeOfRubber()?"летняя":"зимняя")+" резина"+
                 ", "+(car.getKey().isKeylessAccess()?"безключевой доступ":"ключевой доступ")+
                 ", "+(car.getKey().isRemoteEngineStart()? "удаленный запуск": "обычный запуск")+", номер страховки"+
-                car.getInsurance().getNumber()+", стоимость страховки: " + car.getInsurance().getCost()+
-                ", срок действия страховки: "+car.getInsurance().getExpireDate());
+                car.getInsurance().getNumber+", стоимость страховки: " + car.getInsurance()+
+                ", срок действия страховки: "+getExpireDate);
     }
 
 
