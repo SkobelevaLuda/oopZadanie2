@@ -19,7 +19,7 @@ public class Car extends Transport {
                int year, String country,
                String bodyType,
                int numberOfSeats, String transmission) {
-        super(brand, model, year, country,bodyType,numberOfSeats, transmission);{
+        super(brand, year, country);{
 
             if (engineVolume == 0) {
                 this.engineVolume = 1.5;
@@ -155,7 +155,7 @@ public class Car extends Transport {
                 return keylessAccess;
             }
         }
-        class Insurance {
+        public class Insurance {
             private final LocalDate expireDate;
             private final double cost;
             private final String number;

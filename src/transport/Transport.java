@@ -9,7 +9,7 @@ public class Transport {
     private String color;
     private int maxSpeed;
 
-    public Transport(String brand, String model, int year, String country, String bodyType, int numberOfSeats, String transmission) {
+    public Transport(String brand, int year, String country) {
         if (year <= 0) {
             this.year = 2000;
         } else {
