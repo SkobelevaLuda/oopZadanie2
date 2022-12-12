@@ -18,8 +18,8 @@ public class Car extends Transport {
                String model,
                int year, String country,
                String bodyType,
-               int numberOfSeats, String transmission) {
-        super(brand, year, country);{
+               int numberOfSeats, String transmission, double fuelPercentage) {
+        super(brand, year, country,fuelPercentage);{
 
             if (engineVolume == 0) {
                 this.engineVolume = 1.5;
@@ -51,6 +51,7 @@ public class Car extends Transport {
         } else {
             this.insurance = insurance;
         }
+
     }
 
 
@@ -86,6 +87,7 @@ public class Car extends Transport {
             return insurance;
         }
 
+
         public void setEngineVolume ( double engineVolume){
             this.engineVolume = engineVolume;
         }
@@ -117,6 +119,7 @@ public class Car extends Transport {
         public void setInsurance (Insurance insurance){
             this.insurance = insurance;
         }
+
         public void changeTyers () {
             typeOfRubber = !typeOfRubber;
         }
@@ -134,7 +137,14 @@ public class Car extends Transport {
             }
             return true;
         }
-        public static class Key {
+
+
+    @Override
+    public void refill() {
+        System.out.println("Можно заправлять бензином, дизелем или заряжать на электропарковках,"+fuelPercentage+"%");
+    }
+
+    public static class Key {
             private final boolean remoteEngineStart;
             private final boolean keylessAccess;
 
@@ -201,8 +211,11 @@ public class Car extends Transport {
                     System.out.println("Номер страховки некорректный!");
                 }
             }
+
         }
+
     }
+
 
 
 
