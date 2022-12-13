@@ -1,34 +1,55 @@
 package transport;
 
-import java.time.LocalDate;
-
 public class Car extends Transport {
     private double engineVolume;
 
-    private String transmission;
-    private final String bodyType;
-    private String registrtionNumber;
-    private final int numberOfSeats;
-    private boolean typeOfRubber;
-    private Key key;
-    private Insurance insurance;
+    //private String transmission;
+    //private final String bodyType;
+    //private String registrtionNumber;
+    //private final int numberOfSeats;
+    //private boolean typeOfRubber;
+    //private Key key;
+    //private Insurance insurance;
 
+
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
+    }
 
     public Car(String brand,
                String model,
                int year, String country,
                String bodyType,
                int numberOfSeats, String transmission, double fuelPercentage) {
-        super(brand, year, country,fuelPercentage);{
+        super(brand, country);
+        {
 
             if (engineVolume == 0) {
                 this.engineVolume = 1.5;
             } else {
                 this.engineVolume = engineVolume;
             }
-            this.engineVolume = engineVolume;
         }
-        if (bodyType == null) {
+    }
+
+    public Car(String brand,
+               String model,
+               double engineVolume) {
+        super(brand, model);
+        {
+            if (engineVolume == 0) {
+                this.engineVolume = 1.5;
+            } else {
+                this.engineVolume = engineVolume;
+            }
+
+
+
+        /*if (bodyType == null) {
             this.bodyType = "default";
         } else {
             this.bodyType = bodyType;
@@ -52,14 +73,10 @@ public class Car extends Transport {
             this.insurance = insurance;
         }
 
-    }
+    }*/
 
 
-        public double getEngineVolume () {
-            return engineVolume;
-        }
-
-        public String getTransmission () {
+              /*public String getTransmission () {
             return transmission;
         }
 
@@ -86,13 +103,7 @@ public class Car extends Transport {
         public Insurance getInsurance () {
             return insurance;
         }
-
-
-        public void setEngineVolume ( double engineVolume){
-            this.engineVolume = engineVolume;
-        }
-
-        public void setTransmission (String transmission){
+  public void setTransmission (String transmission){
             if (transmission == null) {
                 this.transmission = "МККП";
             } else {
@@ -210,12 +221,24 @@ public class Car extends Transport {
                 if (number.length() != 9) {
                     System.out.println("Номер страховки некорректный!");
                 }
-            }
+            }*/
 
         }
 
+
     }
 
+    @Override
+    public void startMoving() {
+        System.out.println("Начать движение!");
+    }
+
+    @Override
+    public void finishOfMoving() {
+        System.out.println(" Закончить движение!");
+
+    }
+}
 
 
 

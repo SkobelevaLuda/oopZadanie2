@@ -1,16 +1,13 @@
 package transport;
 
-public class Bus extends Transport{
+public class Truck extends Transport {
     private double engineVolume;
-    public Bus(String brand, int year, String country,int maxSpeed, double fuelPercentage, double engineVolume) {
+
+    public Truck(String brand, String country, double fuelPercentage, double engineVolume) {
         super(brand, country);
-        if (engineVolume == 0) {
-            this.engineVolume = 1.5;
-        } else {
-            this.engineVolume = engineVolume;
-        }
+        this.engineVolume = engineVolume;
     }
-    public Bus(String brand,
+    public Truck(String brand,
                String model,
                double engineVolume) {
         super(brand, model);
@@ -21,19 +18,6 @@ public class Bus extends Transport{
                 this.engineVolume = engineVolume;
             }
         }
-
-       /* if (maxSpeed<=0){
-            this.maxSpeed=Math.abs(maxSpeed);
-        }else {
-            this.maxSpeed = maxSpeed;
-        }
-
-    }
-
-
-    @Override
-    public void refill() {
-        System.out.println("Можно заправлять бензином или дизелем "+fuelPercentage+"%");*/
     }
 
     public double getEngineVolume() {

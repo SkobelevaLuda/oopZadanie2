@@ -7,9 +7,8 @@ public class Train extends Transport {
     private String finalStop;
     private int namberOfWagons;
 
-    public Train(String brand, int year, String country, double priceOfTrip, int travelTime, String stationName,
-                 String finalStop, int namberOfWagons, double fuelPercentage) {
-        super(brand, year, country,fuelPercentage);
+    public Train(String brand, String country, double priceOfTrip) {
+        super(brand, country);
         if (priceOfTrip <= 0) {
             this.priceOfTrip = Math.abs(priceOfTrip);
         } else {
@@ -79,7 +78,17 @@ public class Train extends Transport {
     }
 
     @Override
-    public void refill() {
-        System.out.println("Можно заправлять дизелем "+fuelPercentage+"%");
+    public void startMoving() {
+
     }
-}
+
+    @Override
+    public void finishOfMoving() {
+
+    }
+
+    //@Override
+    //public void refill() {
+     //   System.out.println("Можно заправлять дизелем "+fuelPercentage+"%");
+    }
+

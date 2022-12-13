@@ -4,19 +4,45 @@ public abstract class Transport {
 
     private String brand;
     private String model;
-    private final int year;
+
+    public Transport(String brand, String country) {
+    }
+
+    /*private final int year;
     private final String country;
     private String color;
     public int maxSpeed;
     public double fuelPercentage;
+     */
 
-    public Transport(String brand, int year, String country, double fuelPercentage) {
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void Transport(String brand, String model, int year, String country, double fuelPercentage) {
         if (brand == null) {
             this.brand = "default";
         } else {
             this.brand = brand;
         }
-        if (year <= 0) {
+        if (model == null) {
+            this.model = "default";
+        } else {
+            this.model = model;
+        }
+        /*if (year <= 0) {
             this.year = 2000;
         } else {
             this.year = year;
@@ -42,32 +68,7 @@ public abstract class Transport {
     public void setFuelPercentage(double fuelPercentage) {
 
         this.fuelPercentage = fuelPercentage;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        if (brand == null) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        if (model == null) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-    }
-
+  
     public int getYear() {
         return year;
     }
@@ -97,6 +98,8 @@ public abstract class Transport {
             this.maxSpeed=Math.abs(maxSpeed);
         }else {
             this.maxSpeed = maxSpeed;
-        }
+        }*/
     }
+    public abstract void startMoving();
+    public abstract void finishOfMoving();
 }

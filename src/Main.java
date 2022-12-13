@@ -1,9 +1,6 @@
-import animals.Cat;
-import transport.Bus;
-import transport.Car;
-import transport.Train;
+import transport.*;
 
-import javax.print.attribute.standard.PrinterInfo;
+import javax.swing.undo.AbstractUndoableEdit;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,27 +20,27 @@ public class Main {
 
         Car hyundai = new Car("Hyundai ", "Avante, ", 2020, " Южная Корея ",
                 "седан", 5, " РКПП ",98);
-        printInfo(lada);
+        /*printInfo(lada);
         printInfo(audi);
         printInfo(bmv);
         printInfo(kia);
         printInfo(hyundai);
 
-        /*Поезд «Ласточка», модель B-901, 2011 год выпуска в России, скорость передвижения — 301 км/ч, отходит от
+        Поезд «Ласточка», модель B-901, 2011 год выпуска в России, скорость передвижения — 301 км/ч, отходит от
         Белорусского вокзала и следует до станции Минск-Пассажирский. Цена поездки — 3500 рублей, в поезде 11 вагонов.
                 Поезд «Ленинград», модель D-125, 2019 год выпуска в России, скорость передвижения — 270 км/ч, отходит
                 от Ленинградского вокзала и следует до станции Ленинград-Пассажирский. Цена поездки — 1700 рублей, в
                 поезде 8 вагонов.*/
 
 
-        Train lastochka = new Train("B-901",2020,"Россия,", 3500,25,
-                "Белорусский вокзал","Минск-Пассажирский",11,58);
-        Train leningrad = new Train("D-125",2021, "Россия",1700,56,
-                "Ленинградский вокзал","Ленинград-Пассажирский",8,99);
-        printInfo2(lastochka);
+        Train lastochka = new Train("B-901", "Россия,", 3500
+        );
+        Train leningrad = new Train("D-125", "Россия",1700
+        );
+        /*printInfo2(lastochka);
         printInfo2(leningrad);
 
-        Bus bus12=new Bus("12", 2022, " Россия ",100, 99);
+      Bus bus12=new Bus("12", 2022, " Россия ",100, 99);
         Bus bus15=new Bus("15", 2021, " Россия ",85,12);
         Bus bus155=new Bus("155", 2021, " Россия ",110,12);
         printInfo3(bus12);
@@ -77,8 +74,30 @@ public class Main {
     private static void printInfo3(Bus bus) {
         System.out.println("Модель " + bus.getBrand() + ", год выпуска " + bus.getYear() + ", Страна производитель: "
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
-                "или дизелем "+bus.getFuelPercentage()+"%");
+                "или дизелем "+bus.getFuelPercentage()+"%");*/
+
+        Car audi2 = new Car(" Audi", " A-8",4);
+        Car audi3 = new Car(" Audi", " A-10",2.5);
+        Car audi4 = new Car(" Audi", " A-11",2.2);
+        Car audi5 = new Car(" Audi", " A-100",-8);
+        Truck kamaz2 = new Truck(" Камаз ", " к100 ",12);
+        Truck kamaz3= new Truck(" Камаз", " к1000",10);
+        Truck kamaz4 = new Truck(" Камаз", " A-100",35);
+        Truck kamaz5 = new Truck(" Ока", " A-100",100);
+        Bus a154 = new Bus(" BMW", " К200",12);
+        Bus b100 = new Bus(" BMW", " трамвайчик",10);
+        Bus c444 = new Bus(" BMW", " к300",6);
+        Bus d478 = new Bus(" Зил", " вездеход",90);
+
+        a154.finishOfMoving();
+        kamaz4.finishOfMoving();
+        audi3.finishOfMoving();
+        b100.startMoving();
+        kamaz5.startMoving();
+
+
     }
+
 
 
 }
