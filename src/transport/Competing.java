@@ -6,4 +6,7 @@ public interface Competing {
     double maxSpeed=401;
 
 
+
+
+
 }
