@@ -1,7 +1,10 @@
 package transport;
 
-public class Truck extends Transport {
+public class Truck extends Transport implements Competing {
     private double engineVolume;
+
+    public static final int BEST_TIME= 22;
+    public static final int MAX_SPEED= 44;
 
     public Truck(String brand, String country, double fuelPercentage, double engineVolume) {
         super(brand, country);
@@ -36,5 +39,21 @@ public class Truck extends Transport {
     @Override
     public void finishOfMoving() {
         System.out.println(" Закончить движение!");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println( "Грузовик прошел Пит Стоп");
+
+    }
+
+    @Override
+    public int BestTime() {
+        return BEST_TIME;
+    }
+
+    @Override
+    public int MaxSpeed() {
+        return MAX_SPEED;
     }
 }

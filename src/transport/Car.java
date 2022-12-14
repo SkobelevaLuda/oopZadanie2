@@ -1,6 +1,6 @@
 package transport;
 
-public class Car extends Transport {
+public class Car extends Transport implements Competing {
     private double engineVolume;
 
     //private String transmission;
@@ -10,6 +10,9 @@ public class Car extends Transport {
     //private boolean typeOfRubber;
     //private Key key;
     //private Insurance insurance;
+
+    public static final int BEST_TIME= 8;
+    public static final int MAX_SPEED= 44;
 
 
     public double getEngineVolume() {
@@ -238,7 +241,24 @@ public class Car extends Transport {
         System.out.println(" Закончить движение!");
 
     }
+
+    @Override
+    public void pitStop() {
+        System.out.println( "Машина прошла Пит Стоп");
+
+    }
+
+    @Override
+    public int BestTime() {
+        return BEST_TIME;
+    }
+
+    @Override
+    public int MaxSpeed() {
+        return MAX_SPEED;
+    }
 }
+
 
 
 

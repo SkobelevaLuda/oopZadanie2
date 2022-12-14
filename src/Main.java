@@ -89,11 +89,14 @@ public class Main {
         Bus c444 = new Bus(" BMW", " к300",6);
         Bus d478 = new Bus(" Зил", " вездеход",90);
 
-        a154.finishOfMoving();
+        a154.pitStop();
         kamaz4.finishOfMoving();
         audi3.finishOfMoving();
         b100.startMoving();
         kamaz5.startMoving();
+        c444.pitStop();
+
+
 
 
     }
