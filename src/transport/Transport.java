@@ -6,6 +6,8 @@ public abstract class Transport {
     private String model;
 
     public Transport(String brand, String country) {
+        this.brand=brand;
+
     }
 
     /*private final int year;
@@ -15,21 +17,6 @@ public abstract class Transport {
     public double fuelPercentage;
      */
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
 
     public void Transport(String brand, String model, int year, String country, double fuelPercentage) {
         if (brand == null) {
@@ -100,6 +87,27 @@ public abstract class Transport {
             this.maxSpeed = maxSpeed;
         }*/
     }
+
     public abstract void startMoving();
     public abstract void finishOfMoving();
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        if (brand==null){
+            this.brand="не указано";
+        }else {
+            this.brand = brand;
+        }
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
 }
