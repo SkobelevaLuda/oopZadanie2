@@ -1,22 +1,33 @@
 package transport;
 
-public class Bus extends Transport implements Competing{
+public class Bus extends Transport implements Competing {
+    private Capasity capasity;
     private double engineVolume;
 
-    public static final int BEST_TIME= 40;
-    public static final int MAX_SPEED= 60;
-    public Bus(String brand, int year, String country,int maxSpeed, double fuelPercentage, double engineVolume) {
+    public static final int BEST_TIME = 40;
+    public static final int MAX_SPEED = 60;
+
+    public Bus(String brand, String country, Capasity capasity) {
+        super(brand, country);
+        this.capasity = capasity;
+    }
+
+    public Bus(String brand, int year, String country, int maxSpeed, double fuelPercentage, double engineVolume,
+               Capasity capasity) {
         super(brand, country);
         if (engineVolume == 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
         }
+
     }
+
     public Bus(String brand,
                String model,
-               double engineVolume) {
+               double engineVolume, Capasity capasity) {
         super(brand, model);
+        this.capasity = capasity;
         {
             if (engineVolume == 0) {
                 this.engineVolume = 1.5;
@@ -47,6 +58,14 @@ public class Bus extends Transport implements Competing{
         this.engineVolume = engineVolume;
     }
 
+    public Capasity getCapasity() {
+        return capasity;
+    }
+
+    public void setCapasity(Capasity capasity) {
+        this.capasity = capasity;
+    }
+
     @Override
     public void startMoving() {
         System.out.println("Начать движение!");
@@ -59,7 +78,7 @@ public class Bus extends Transport implements Competing{
 
     @Override
     public void pitStop() {
-        System.out.println( "Автобус прошел Пит Стоп");
+        System.out.println("Автобус прошел Пит Стоп");
 
     }
 
@@ -71,5 +90,16 @@ public class Bus extends Transport implements Competing{
     @Override
     public int MaxSpeed() {
         return MAX_SPEED;
+    }
+
+    @Override
+    public void printType() {
+        if (capasity == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(" Вместимость : от " + capasity.getFrom() + " до " + capasity.getTo());
+            ;
+        }
+
     }
 }

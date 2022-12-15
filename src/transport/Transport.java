@@ -6,7 +6,7 @@ public abstract class Transport {
     private String model;
 
     public Transport(String brand, String country) {
-        this.brand=brand;
+        this.brand = brand;
 
     }
 
@@ -89,15 +89,19 @@ public abstract class Transport {
     }
 
     public abstract void startMoving();
+
     public abstract void finishOfMoving();
+
+    public abstract void printType();
+
     public String getBrand() {
         return brand;
     }
 
     public void setBrand(String brand) {
-        if (brand==null){
-            this.brand="не указано";
-        }else {
+        if (brand == null) {
+            this.brand = "не указано";
+        } else {
             this.brand = brand;
         }
     }

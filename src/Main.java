@@ -1,10 +1,8 @@
 import transport.*;
 
-import javax.swing.undo.AbstractUndoableEdit;
-
 public class Main {
     public static void main(String[] args) {
-        Car lada = new Car("Lada", "granta", 2010, "Россия", "седан", 5,
+        /*Car lada = new Car("Lada", "granta", 2010, "Россия", "седан", 5,
                 " АКПП", 55);
 
         Car audi = new Car("Audi ", "A8 50 L TDI quattro ", 2020, " Англия",
@@ -20,7 +18,7 @@ public class Main {
 
         Car hyundai = new Car("Hyundai ", "Avante, ", 2020, " Южная Корея ",
                 "седан", 5, " РКПП ", 98);
-        /*printInfo(lada);
+        printInfo(lada);
         printInfo(audi);
         printInfo(bmv);
         printInfo(kia);
@@ -76,18 +74,18 @@ public class Main {
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
                 "или дизелем "+bus.getFuelPercentage()+"%");*/
 
-        Car audi2 = new Car(" Audi", " A-8", 4);
-        Car audi3 = new Car(" Audi", " A-10", 2.5);
-        Car audi4 = new Car(" Audi", " A-11", 2.2);
-        Car audi5 = new Car(" Audi", " A-100", -8);
-        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12);
-        Truck kamaz3 = new Truck(" Камаз", " к1000", 10);
-        Truck kamaz4 = new Truck(" Камаз", " A-100", 35);
-        Truck kamaz5 = new Truck(" Ока", " A-100", 100);
-        Bus a154 = new Bus(" BMW", " К200", 12);
-        Bus b100 = new Bus(" BMW", " трамвайчик", 10);
-        Bus c444 = new Bus(" BMW", " к300", 6);
-        Bus d478 = new Bus(" Зил", " вездеход", 90);
+        Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4);
+        Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2);
+        Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2);
+        Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8);
+        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1);
+        Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1);
+        Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1);
+        Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2);
+        Bus a154 = new Bus(" BMW", " К200", 12, Capasity.BIG);
+        Bus b100 = new Bus(" BMW", " трамвайчик", 10, Capasity.SMALL);
+        Bus c444 = new Bus(" BMW", " к300", 6, Capasity.BIG);
+        Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL);
 
 
         a154.pitStop();
@@ -97,15 +95,19 @@ public class Main {
         kamaz5.startMoving();
         c444.pitStop();
 
-        DriverB vasiliy = new DriverB("Василий", true,2);
-        DriverC oleg = new DriverC(" Олег",true,5);
-        DriverD ivan = new DriverD(" Иван",true, 10);
+        DriverB vasiliy = new DriverB("Василий", true, 2);
+        DriverC oleg = new DriverC(" Олег", true, 5);
+        DriverD ivan = new DriverD(" Иван", true, 10);
 
         oleg.startMoving(kamaz2);
         oleg.finishOfMoving(kamaz3);
         ivan.refuei(c444);
         vasiliy.startMoving(audi2);
         vasiliy.printInformation(audi5);
+
+        kamaz4.printType();
+
+
     }
 
 

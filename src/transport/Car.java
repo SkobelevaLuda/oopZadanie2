@@ -1,6 +1,8 @@
 package transport;
 
 public class Car extends Transport implements Competing {
+    public TypeOfBody typeOfBody;
+
     private double engineVolume;
 
     //private String transmission;
@@ -11,8 +13,8 @@ public class Car extends Transport implements Competing {
     //private Key key;
     //private Insurance insurance;
 
-    public static final int BEST_TIME= 8;
-    public static final int MAX_SPEED= 44;
+    public static final int BEST_TIME = 8;
+    public static final int MAX_SPEED = 44;
 
 
     public double getEngineVolume() {
@@ -24,7 +26,7 @@ public class Car extends Transport implements Competing {
     }
 
 
-    public Car(String brand,
+    /*public Car(String brand,
                String model,
                int year, String country,
                String bodyType,
@@ -37,23 +39,20 @@ public class Car extends Transport implements Competing {
             } else {
                 this.engineVolume = engineVolume;
             }
+        }*/
+
+
+    public Car(String brand, String country, TypeOfBody typeOfBody, double engineVolume) {
+        super(brand, country);
+        this.typeOfBody = typeOfBody;
+        if (engineVolume == 0) {
+            this.engineVolume = 1.5;
+        } else {
+            this.engineVolume = engineVolume;
         }
+
     }
-
-    public Car(String brand,
-               String model,
-               double engineVolume) {
-        super(brand, model);
-        {
-            if (engineVolume == 0) {
-                this.engineVolume = 1.5;
-            } else {
-                this.engineVolume = engineVolume;
-            }
-
-
-
-        /*if (bodyType == null) {
+    /*if (bodyType == null) {
             this.bodyType = "default";
         } else {
             this.bodyType = bodyType;
@@ -227,9 +226,13 @@ public class Car extends Transport implements Competing {
                 }
             }*/
 
-        }
 
+    public TypeOfBody getTypeOfBody() {
+        return typeOfBody;
+    }
 
+    public void setTypeOfBody(TypeOfBody typeOfBody) {
+        this.typeOfBody = typeOfBody;
     }
 
     @Override
@@ -245,7 +248,7 @@ public class Car extends Transport implements Competing {
 
     @Override
     public void pitStop() {
-        System.out.println( "Машина прошла Пит Стоп");
+        System.out.println("Машина прошла Пит Стоп");
 
     }
 
@@ -258,7 +261,17 @@ public class Car extends Transport implements Competing {
     public int MaxSpeed() {
         return MAX_SPEED;
     }
+
+    @Override
+    public void printType() {
+        if (typeOfBody == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(" Тип кузова: " + typeOfBody);
+        }
+    }
 }
+
 
 
 

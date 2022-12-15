@@ -1,19 +1,18 @@
 package transport;
 
 public class Truck extends Transport implements Competing {
+    private Weigth weigth;
     private double engineVolume;
 
-    public static final int BEST_TIME= 22;
-    public static final int MAX_SPEED= 44;
+    public static final int BEST_TIME = 22;
+    public static final int MAX_SPEED = 44;
 
-    public Truck(String brand, String country, double fuelPercentage, double engineVolume) {
-        super(brand, country);
-        this.engineVolume = engineVolume;
-    }
+
     public Truck(String brand,
-               String model,
-               double engineVolume) {
+                 String model,
+                 double engineVolume, Weigth weigth) {
         super(brand, model);
+        this.weigth = weigth;
         {
             if (engineVolume == 0) {
                 this.engineVolume = 1.5;
@@ -31,6 +30,14 @@ public class Truck extends Transport implements Competing {
         this.engineVolume = engineVolume;
     }
 
+    public Weigth getWeigth() {
+        return weigth;
+    }
+
+    public void setWeigth(Weigth weigth) {
+        this.weigth = weigth;
+    }
+
     @Override
     public void startMoving() {
         System.out.println("Начать движение!");
@@ -43,7 +50,7 @@ public class Truck extends Transport implements Competing {
 
     @Override
     public void pitStop() {
-        System.out.println( "Грузовик прошел Пит Стоп");
+        System.out.println("Грузовик прошел Пит Стоп");
 
     }
 
@@ -55,5 +62,17 @@ public class Truck extends Transport implements Competing {
     @Override
     public int MaxSpeed() {
         return MAX_SPEED;
+    }
+
+    @Override
+    public void printType() {
+        if (weigth == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            String from = weigth.getFrom() == null ? "" : " от " + weigth.getFrom() + " ";
+            String to = weigth.getTo() == null ? "" : " до " + weigth.getTo();
+            System.out.println(" Грузоподьемность : " + from + to);
+            ;
+        }
     }
 }
