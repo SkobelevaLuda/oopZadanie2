@@ -7,14 +7,14 @@ public class Bus extends Transport implements Competing {
     public static final int BEST_TIME = 40;
     public static final int MAX_SPEED = 60;
 
-    public Bus(String brand, String country, Capasity capasity) {
-        super(brand, country);
+    public Bus(String brand, String country, Capasity capasity, boolean diagnostic) {
+        super(brand, country, diagnostic);
         this.capasity = capasity;
     }
 
     public Bus(String brand, int year, String country, int maxSpeed, double fuelPercentage, double engineVolume,
-               Capasity capasity) {
-        super(brand, country);
+               Capasity capasity, boolean diagnostic) {
+        super(brand, country,diagnostic);
         if (engineVolume == 0) {
             this.engineVolume = 1.5;
         } else {
@@ -25,8 +25,8 @@ public class Bus extends Transport implements Competing {
 
     public Bus(String brand,
                String model,
-               double engineVolume, Capasity capasity) {
-        super(brand, model);
+               double engineVolume, Capasity capasity, boolean diagnostic) {
+        super(brand, model,diagnostic);
         this.capasity = capasity;
         {
             if (engineVolume == 0) {
@@ -64,6 +64,11 @@ public class Bus extends Transport implements Competing {
 
     public void setCapasity(Capasity capasity) {
         this.capasity = capasity;
+    }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Диагностика не требуется");
     }
 
     @Override

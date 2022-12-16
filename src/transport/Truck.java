@@ -10,8 +10,8 @@ public class Truck extends Transport implements Competing {
 
     public Truck(String brand,
                  String model,
-                 double engineVolume, Weigth weigth) {
-        super(brand, model);
+                 double engineVolume, Weigth weigth, boolean diagnostic) {
+        super(brand, model, diagnostic);
         this.weigth = weigth;
         {
             if (engineVolume == 0) {
@@ -36,6 +36,15 @@ public class Truck extends Transport implements Competing {
 
     public void setWeigth(Weigth weigth) {
         this.weigth = weigth;
+    }
+
+    @Override
+    public void passDiagnostics() {
+        if (diagnostic=true){
+            System.out.println("Диагностика пройдена");
+        }else{
+            throw new RuntimeException();
+        }
     }
 
     @Override

@@ -16,7 +16,6 @@ public class Car extends Transport implements Competing {
     public static final int BEST_TIME = 8;
     public static final int MAX_SPEED = 44;
 
-
     public double getEngineVolume() {
         return engineVolume;
     }
@@ -42,15 +41,14 @@ public class Car extends Transport implements Competing {
         }*/
 
 
-    public Car(String brand, String country, TypeOfBody typeOfBody, double engineVolume) {
-        super(brand, country);
+    public Car(String brand, String country, TypeOfBody typeOfBody, double engineVolume,boolean diagnostic) {
+        super(brand, country, diagnostic);
         this.typeOfBody = typeOfBody;
         if (engineVolume == 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
         }
-
     }
     /*if (bodyType == null) {
             this.bodyType = "default";
@@ -233,6 +231,16 @@ public class Car extends Transport implements Competing {
 
     public void setTypeOfBody(TypeOfBody typeOfBody) {
         this.typeOfBody = typeOfBody;
+    }
+
+
+    @Override
+    public void passDiagnostics() {
+        if (diagnostic=true){
+            System.out.println("Диагностика пройдена");
+        }else{
+            throw new RuntimeException();
+        }
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Main {
                 поезде 8 вагонов.*/
 
 
-        Train lastochka = new Train("B-901", "Россия,", 3500
+       /* Train lastochka = new Train("B-901", "Россия,", 3500
         );
         Train leningrad = new Train("D-125", "Россия", 1700
         );
@@ -74,18 +74,18 @@ public class Main {
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
                 "или дизелем "+bus.getFuelPercentage()+"%");*/
 
-        Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4);
-        Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2);
-        Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2);
-        Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8);
-        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1);
-        Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1);
-        Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1);
-        Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2);
-        Bus a154 = new Bus(" BMW", " К200", 12, Capasity.BIG);
-        Bus b100 = new Bus(" BMW", " трамвайчик", 10, Capasity.SMALL);
-        Bus c444 = new Bus(" BMW", " к300", 6, Capasity.BIG);
-        Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL);
+        Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4, false);
+        Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2,true);
+        Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2,true);
+        Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8,true);
+        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1,false);
+        Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1,true);
+        Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1,true);
+        Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2,true);
+        Bus a154 = new Bus(" BMW", " К200", 12, Capasity.BIG,true);
+        Bus b100 = new Bus(" BMW", " трамвайчик", 10, Capasity.SMALL,true);
+        Bus c444 = new Bus(" BMW", " к300", 6, Capasity.BIG,true);
+        Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL,true);
 
 
         a154.pitStop();

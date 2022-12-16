@@ -2,14 +2,33 @@ package transport;
 
 public abstract class Transport {
 
+    public abstract void passDiagnostics();
+
     private String brand;
     private String model;
+    public boolean diagnostic;
 
-    public Transport(String brand, String country) {
+    public Transport(String brand, String country,boolean diagnostic) {
         this.brand = brand;
+        if ( diagnostic==true){
+            this.diagnostic = diagnostic;
+        }else {
+            throw new RuntimeException();
+        }
 
     }
 
+    public boolean isDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(boolean diagnostic) {
+        this.diagnostic = diagnostic;
+    }
+
+    public Transport(boolean diagnostic) {
+        this.diagnostic = diagnostic;
+    }
     /*private final int year;
     private final String country;
     private String color;
