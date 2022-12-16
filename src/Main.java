@@ -74,11 +74,11 @@ public class Main {
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
                 "или дизелем "+bus.getFuelPercentage()+"%");*/
 
-        Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4, false);
+        Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4, true);
         Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2,true);
         Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2,true);
         Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8,true);
-        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1,false);
+        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1,true);
         Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1,true);
         Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1,true);
         Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2,true);
@@ -96,7 +96,7 @@ public class Main {
         c444.pitStop();
 
         DriverB vasiliy = new DriverB("Василий", true, 2);
-        DriverC oleg = new DriverC(" Олег", true, 5);
+        DriverC oleg = new DriverC(" Олег", false, 5);
         DriverD ivan = new DriverD(" Иван", true, 10);
 
         oleg.startMoving(kamaz2);

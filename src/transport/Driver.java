@@ -6,8 +6,12 @@ public abstract class Driver<D extends Transport> {
     private int experience;
 
     public Driver(String surname, boolean drivingLicense, int experience) {
+        if (drivingLicense==true){
+            this.drivingLicense = drivingLicense;
+        }else {
+            throw new RuntimeException( "Необходимо указать категорию прав");
+        }
         this.surname = surname;
-        this.drivingLicense = drivingLicense;
         this.experience = experience;
     }
 
