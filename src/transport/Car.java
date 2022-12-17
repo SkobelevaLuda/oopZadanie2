@@ -235,12 +235,13 @@ public class Car extends Transport implements Competing {
 
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
         if (diagnostic=true){
             System.out.println("Диагностика пройдена");
         }else{
             throw new RuntimeException();
         }
+        return false;
     }
 
     @Override
@@ -277,6 +278,12 @@ public class Car extends Transport implements Competing {
         } else {
             System.out.println(" Тип кузова: " + typeOfBody);
         }
+    }
+
+    @Override
+    public void repair() {
+        System.out.println(" Машина "+getBrand()+getModel()+ " починена! ");
+
     }
 }
 

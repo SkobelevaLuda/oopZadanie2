@@ -1,22 +1,34 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport {
 
-    public abstract void passDiagnostics();
+    public abstract boolean passDiagnostics();
 
     private String brand;
     private String model;
     public boolean diagnostic;
+    private String sponsor;
+    private final List<Driver> participants=new ArrayList<>();
+    private final List<Mechanic> mechanics=new ArrayList<>();
+    private final List<Sponsor> sponsors=new ArrayList<>();
 
-    public Transport(String brand, String country,boolean diagnostic) {
+    public List<Driver> getParticipants() {
+        return participants;
+
+    }
+
+    public Transport(String brand, String country, boolean diagnostic) {
         this.brand = brand;
         if ( diagnostic==true){
             this.diagnostic = diagnostic;
         }else {
             throw new RuntimeException();
         }
-
     }
+
 
     public boolean isDiagnostic() {
         return diagnostic;
@@ -35,6 +47,16 @@ public abstract class Transport {
     public int maxSpeed;
     public double fuelPercentage;
      */
+    public void AddDriver (Driver<?> driver){
+        participants.add(driver);
+    }
+    public void AddMechanic (Mechanic<?> mechanic) {
+        mechanics.add(mechanic);
+    }
+    public void AddSponsor (Sponsor sponsor) {
+        sponsors.add(sponsor);
+    }
+
 
 
     public void Transport(String brand, String model, int year, String country, double fuelPercentage) {
@@ -116,6 +138,7 @@ public abstract class Transport {
     public String getBrand() {
         return brand;
     }
+    public abstract void repair();
 
     public void setBrand(String brand) {
         if (brand == null) {
@@ -133,4 +156,7 @@ public abstract class Transport {
         this.model = model;
     }
 
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
 }

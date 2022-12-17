@@ -39,12 +39,13 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
         if (diagnostic=true){
             System.out.println("Диагностика пройдена");
         }else{
             throw new RuntimeException();
         }
+        return false;
     }
 
     @Override
@@ -83,5 +84,10 @@ public class Truck extends Transport implements Competing {
             System.out.println(" Грузоподьемность : " + from + to);
             ;
         }
+    }
+    @Override
+    public void repair() {
+        System.out.println(" Грузовик "+getBrand()+getModel()+ " починен! ");
+
     }
 }

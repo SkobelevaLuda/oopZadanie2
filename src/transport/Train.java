@@ -78,8 +78,9 @@ public class Train extends Transport {
     }
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
 
+        return false;
     }
 
     @Override

@@ -67,8 +67,9 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
         System.out.println("Диагностика не требуется");
+        return false;
     }
 
     @Override
@@ -105,6 +106,11 @@ public class Bus extends Transport implements Competing {
             System.out.println(" Вместимость : от " + capasity.getFrom() + " до " + capasity.getTo());
             ;
         }
+
+    }
+    @Override
+    public void repair() {
+        System.out.println(" Автобус "+getBrand()+getModel()+ " починен! ");
 
     }
 }
