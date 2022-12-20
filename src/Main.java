@@ -1,5 +1,7 @@
 import transport.*;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         /*Car lada = new Car("Lada", "granta", 2010, "Россия", "седан", 5,
@@ -74,7 +76,16 @@ public class Main {
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
                 "или дизелем "+bus.getFuelPercentage()+"%");*/
 
+        Mechanic <Car> dima= new Mechanic<Car>("Дима", "ООО Светло"," Седан");
+        Sponsor vasichkin=new Sponsor("Васичкин", 700);
+        Sponsor solnishko=new Sponsor("ООО Солнышко", 700000);
+
+
         Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4, true);
+        audi2.AddDriver(new DriverB("Василий", true, 2));
+        audi2.AddMechanic (dima);
+        audi2.AddSponsor(vasichkin);
+
         Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2,true);
         Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2,true);
         Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8,true);
@@ -88,26 +99,22 @@ public class Main {
         Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL,true);
 
 
-        a154.pitStop();
-        kamaz4.finishOfMoving();
-        audi3.finishOfMoving();
-        b100.startMoving();
-        kamaz5.startMoving();
-        c444.pitStop();
+
 
         DriverB vasiliy = new DriverB("Василий", true, 2);
         DriverC oleg = new DriverC(" Олег", false, 5);
         DriverD ivan = new DriverD(" Иван", true, 10);
 
-        oleg.startMoving(kamaz2);
-        oleg.finishOfMoving(kamaz3);
-        ivan.refuei(c444);
-        vasiliy.startMoving(audi2);
-        vasiliy.printInformation(audi5);
-
-        kamaz4.printType();
+        List<Transport>transports=List.of(audi3,kamaz2,audi2,a154);
 
 
+
+
+
+
+    }
+    private static void printInfo5(Transport transport){
+        System.out.println();
     }
 
 

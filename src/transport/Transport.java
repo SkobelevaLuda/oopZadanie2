@@ -1,6 +1,7 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class Transport {
@@ -11,11 +12,11 @@ public abstract class Transport {
     private String model;
     public boolean diagnostic;
     private String sponsor;
-    private final List<Driver> participants=new ArrayList<>();
-    private final List<Mechanic> mechanics=new ArrayList<>();
+    private final List<Driver<?>> participants=new ArrayList<Driver<?>>();
+    private final List<Mechanic> mechanics=new ArrayList<Mechanic<>>();
     private final List<Sponsor> sponsors=new ArrayList<>();
 
-    public List<Driver> getParticipants() {
+    public List<Driver<?>> getParticipants() {
         return participants;
 
     }
@@ -47,14 +48,14 @@ public abstract class Transport {
     public int maxSpeed;
     public double fuelPercentage;
      */
-    public void AddDriver (Driver<?> driver){
-        participants.add(driver);
+    public void AddDriver (Driver<?> ...driver){
+        this.participants.addAll(Arrays.asList(driver));
     }
-    public void AddMechanic (Mechanic<?> mechanic) {
-        mechanics.add(mechanic);
+    public void AddMechanic (Mechanic<?>... mechanic) {
+        this.mechanics.addAll(Arrays.asList(mechanic));
     }
-    public void AddSponsor (Sponsor sponsor) {
-        sponsors.add(sponsor);
+    public void AddSponsor (Sponsor... sponsor) {
+        this.sponsors.addAll(Arrays.asList(sponsor));
     }
 
 
@@ -158,5 +159,13 @@ public abstract class Transport {
 
     public List<Sponsor> getSponsors() {
         return sponsors;
+    }
+
+    public String getSponsor() {
+        return sponsor;
+    }
+
+    public List<Mechanic> getMechanics() {
+        return mechanics;
     }
 }
