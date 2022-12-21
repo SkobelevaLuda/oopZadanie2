@@ -87,8 +87,8 @@ public class Main {
         audi2.AddSponsor(vasichkin);
 
         Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2, true);
-        Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2, true);
-        Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8, true);
+        Car kia4 = new Car(" Kia", " A-11", TypeOfBody.PICKUP, 2.2, true);
+        Car lada5 = new Car(" Lada", " A-100", TypeOfBody.COMPARTMENT, -8, true);
         Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1, true);
         Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1, true);
         Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1, true);
@@ -107,6 +107,17 @@ public class Main {
         for (Transport transport : transports) {
             printInfo5(transport);
         }
+
+        ServiceStation<Car> vezychaya = new ServiceStation<>("Везучая", " седан");
+        ServiceStation<Truck> bistriy = new ServiceStation<>("Быстрый", " грузовик");
+        vezychaya.addCar(audi3);
+        vezychaya.addCar(audi2);
+        vezychaya.addCar(lada5);
+        bistriy.addTruk(kamaz3);
+        bistriy.addTruk(kamaz2);
+        vezychaya.performDiagnostics();
+        vezychaya.performDiagnostics();
+        vezychaya.performDiagnostics();
 
 
     }
