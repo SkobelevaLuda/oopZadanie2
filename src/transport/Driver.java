@@ -6,21 +6,23 @@ public abstract class Driver<D extends Transport> {
     private int experience;
 
     public Driver(String surname, boolean drivingLicense, int experience) {
-        if (drivingLicense==true){
+        if (drivingLicense == true) {
             this.drivingLicense = drivingLicense;
-        }else {
-            throw new RuntimeException( "Необходимо указать категорию прав");
+        } else {
+            throw new RuntimeException("Необходимо указать категорию прав");
         }
         this.surname = surname;
         this.experience = experience;
     }
 
     public abstract void startMoving(D transport);
+
     public abstract void finishOfMoving(D transport);
+
     public abstract void refuei(D transport);
 
-    public void printInformation(D transport){
-        System.out.println("Водитель "+surname+ " управляет автомобилем " + transport.getBrand()+ " и будет " +
+    public void printInformation(D transport) {
+        System.out.println("Водитель " + surname + " управляет автомобилем " + transport.getBrand() + " и будет " +
                 "участвовать в заезде");
     }
 
@@ -48,4 +50,8 @@ public abstract class Driver<D extends Transport> {
         this.experience = experience;
     }
 
+    @Override
+    public String toString() {
+        return surname + "категория: " + drivingLicense + ", стаж:" + experience;
+    }
 }

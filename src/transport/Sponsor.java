@@ -17,7 +17,13 @@ public class Sponsor {
         this.amount = amount;
 
     }
-    public void toSponsorRase(){
+
+    public void toSponsorRase() {
         System.out.printf(" Спонсор %s проспонстровал заезд на %d%n ,", sponsorName, amount);
+    }
+
+    @Override
+    public String toString() {
+        return "Название " + sponsorName + ", сумма поддержки " + amount;
     }
 }

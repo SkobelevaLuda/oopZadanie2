@@ -12,9 +12,9 @@ public abstract class Transport {
     private String model;
     public boolean diagnostic;
     private String sponsor;
-    private final List<Driver<?>> participants=new ArrayList<Driver<?>>();
-    private final List<Mechanic> mechanics=new ArrayList<Mechanic<>>();
-    private final List<Sponsor> sponsors=new ArrayList<>();
+    private final List<Driver<?>> participants = new ArrayList<Driver<?>>();
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
 
     public List<Driver<?>> getParticipants() {
         return participants;
@@ -23,9 +23,9 @@ public abstract class Transport {
 
     public Transport(String brand, String country, boolean diagnostic) {
         this.brand = brand;
-        if ( diagnostic==true){
+        if (diagnostic == true) {
             this.diagnostic = diagnostic;
-        }else {
+        } else {
             throw new RuntimeException();
         }
     }
@@ -42,22 +42,24 @@ public abstract class Transport {
     public Transport(boolean diagnostic) {
         this.diagnostic = diagnostic;
     }
+
     /*private final int year;
     private final String country;
     private String color;
     public int maxSpeed;
     public double fuelPercentage;
      */
-    public void AddDriver (Driver<?> ...driver){
+    public void AddDriver(Driver<?>... driver) {
         this.participants.addAll(Arrays.asList(driver));
     }
-    public void AddMechanic (Mechanic<?>... mechanic) {
+
+    public void AddMechanic(Mechanic<?>... mechanic) {
         this.mechanics.addAll(Arrays.asList(mechanic));
     }
-    public void AddSponsor (Sponsor... sponsor) {
+
+    public void AddSponsor(Sponsor... sponsor) {
         this.sponsors.addAll(Arrays.asList(sponsor));
     }
-
 
 
     public void Transport(String brand, String model, int year, String country, double fuelPercentage) {
@@ -139,6 +141,7 @@ public abstract class Transport {
     public String getBrand() {
         return brand;
     }
+
     public abstract void repair();
 
     public void setBrand(String brand) {
@@ -165,7 +168,7 @@ public abstract class Transport {
         return sponsor;
     }
 
-    public List<Mechanic> getMechanics() {
+    public List<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 }

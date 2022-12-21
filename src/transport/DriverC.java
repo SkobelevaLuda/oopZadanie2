@@ -1,6 +1,6 @@
 package transport;
 
-public class DriverC extends Driver<Truck>{
+public class DriverC extends Driver<Truck> {
 
     public DriverC(String surname, boolean drivingLicense, int experience) {
         super(surname, drivingLicense, experience);
@@ -20,7 +20,8 @@ public class DriverC extends Driver<Truck>{
 
     @Override
     public void refuei(Truck transport) {
-        System.out.println(" Водитель "+getSurname()+" заправляет "+transport.getBrand());
+        System.out.println(" Водитель " + getSurname() + " заправляет " + transport.getBrand());
 
     }
+
 }

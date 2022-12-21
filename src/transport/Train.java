@@ -7,7 +7,7 @@ public class Train extends Transport {
     private String finalStop;
     private int namberOfWagons;
 
-    public Train(String brand, String country, double priceOfTrip,boolean diagnostic) {
+    public Train(String brand, String country, double priceOfTrip, boolean diagnostic) {
         super(brand, country, diagnostic);
         if (priceOfTrip <= 0) {
             this.priceOfTrip = Math.abs(priceOfTrip);
@@ -95,6 +95,11 @@ public class Train extends Transport {
 
     @Override
     public void printType() {
+
+    }
+
+    @Override
+    public void repair() {
 
     }
 

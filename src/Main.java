@@ -76,45 +76,55 @@ public class Main {
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
                 "или дизелем "+bus.getFuelPercentage()+"%");*/
 
-        Mechanic <Car> dima= new Mechanic<Car>("Дима", "ООО Светло"," Седан");
-        Sponsor vasichkin=new Sponsor("Васичкин", 700);
-        Sponsor solnishko=new Sponsor("ООО Солнышко", 700000);
+        Mechanic<Car> dima = new Mechanic<Car>("Дима", "ООО Светло", " Седан");
+        Sponsor vasichkin = new Sponsor("Васичкин", 700);
+        Sponsor solnishko = new Sponsor("ООО Солнышко", 700000);
 
 
         Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4, true);
         audi2.AddDriver(new DriverB("Василий", true, 2));
-        audi2.AddMechanic (dima);
+        audi2.AddMechanic(dima);
         audi2.AddSponsor(vasichkin);
 
-        Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2,true);
-        Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2,true);
-        Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8,true);
-        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1,true);
-        Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1,true);
-        Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1,true);
-        Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2,true);
-        Bus a154 = new Bus(" BMW", " К200", 12, Capasity.BIG,true);
-        Bus b100 = new Bus(" BMW", " трамвайчик", 10, Capasity.SMALL,true);
-        Bus c444 = new Bus(" BMW", " к300", 6, Capasity.BIG,true);
-        Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL,true);
-
-
+        Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2, true);
+        Car audi4 = new Car(" Audi", " A-11", TypeOfBody.PICKUP, 2.2, true);
+        Car audi5 = new Car(" Audi", " A-100", TypeOfBody.COMPARTMENT, -8, true);
+        Truck kamaz2 = new Truck(" Камаз ", " к100 ", 12, Weigth.N1, true);
+        Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1, true);
+        Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1, true);
+        Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2, true);
+        Bus a154 = new Bus(" BMW", " К200", 12, Capasity.BIG, true);
+        Bus b100 = new Bus(" BMW", " трамвайчик", 10, Capasity.SMALL, true);
+        Bus c444 = new Bus(" BMW", " к300", 6, Capasity.BIG, true);
+        Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL, true);
 
 
         DriverB vasiliy = new DriverB("Василий", true, 2);
-        DriverC oleg = new DriverC(" Олег", false, 5);
+        DriverC oleg = new DriverC(" Олег", true, 5);
         DriverD ivan = new DriverD(" Иван", true, 10);
 
-        List<Transport>transports=List.of(audi3,kamaz2,audi2,a154);
-
-
-
-
+        List<Transport> transports = List.of(audi3, kamaz2, audi2, a154);
+        for (Transport transport : transports) {
+            printInfo5(transport);
+        }
 
 
     }
-    private static void printInfo5(Transport transport){
-        System.out.println();
+
+    private static void printInfo5(Transport transport) {
+        System.out.println(" Информация по автомобилю " + transport.getBrand() + " " + transport.getModel());
+        System.out.println(" Водители: ");
+        for (Driver<?> driver : transport.getParticipants()) {
+            System.out.println(driver.getSurname());
+        }
+        System.out.println(" Спонсоры: ");
+        for (Sponsor sponsor : transport.getSponsors()) {
+            System.out.println(sponsor.getSponsorName());
+        }
+        System.out.println(" Механники: ");
+        for (Mechanic<?> mechanic : transport.getMechanics()) {
+            System.out.println(mechanic.getMechanicName());
+        }
     }
 
 
