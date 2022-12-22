@@ -1,32 +1,37 @@
 package transport;
 
+import java.util.Set;
+
 public class Bus extends Transport implements Competing {
+    private final transport.Mechanic Mechanic;
     private Capasity capasity;
     private double engineVolume;
 
     public static final int BEST_TIME = 40;
     public static final int MAX_SPEED = 60;
 
-    public Bus(String brand, String country, Capasity capasity, boolean diagnostic) {
+    /*public Bus(String brand, String country, Capasity capasity, boolean diagnostic, Set<Mechanic<Bus>> mechanics, transport.Mechanic mechanic) {
         super(brand, country, diagnostic);
         this.capasity = capasity;
+        Mechanic = mechanic;
     }
 
     public Bus(String brand, int year, String country, int maxSpeed, double fuelPercentage, double engineVolume,
-               Capasity capasity, boolean diagnostic) {
+               Capasity capasity, boolean diagnostic, transport.Mechanic mechanic, Set<Mechanic<Bus>> mechanics) {
         super(brand, country,diagnostic);
+        Mechanic = mechanic;
         if (engineVolume == 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
         }
+        this.mechanics = new HashSet<>((Collection<? extends transport.Mechanic<Bus>>) Arrays.asList(Mechanic));
 
-    }
+    }*/
 
     public Bus(String brand,
-               String model,
-               double engineVolume, Capasity capasity, boolean diagnostic) {
-        super(brand, model,diagnostic);
+               String model, Capasity capasity, boolean diagnostic) {
+        super(brand, model, diagnostic);
         this.capasity = capasity;
         {
             if (engineVolume == 0) {
@@ -48,7 +53,9 @@ public class Bus extends Transport implements Competing {
     @Override
     public void refill() {
         System.out.println("Можно заправлять бензином или дизелем "+fuelPercentage+"%");*/
+        Mechanic = null;
     }
+
 
     public double getEngineVolume() {
         return engineVolume;
@@ -108,9 +115,15 @@ public class Bus extends Transport implements Competing {
         }
 
     }
+
     @Override
     public void repair() {
-        System.out.println(" Автобус "+getBrand()+getModel()+ " починен! ");
+        System.out.println(" Автобус " + getBrand() + getModel() + " починен! ");
 
+    }
+
+    @Override
+    public Set<transport.Mechanic<?>> getMechanics() {
+        return mechanics;
     }
 }

@@ -2,6 +2,8 @@ import transport.*;
 
 import java.util.List;
 
+import static transport.Capasity.*;
+
 public class Main {
     public static void main(String[] args) {
         /*Car lada = new Car("Lada", "granta", 2010, "Россия", "седан", 5,
@@ -76,14 +78,14 @@ public class Main {
                 + bus.getCountry() + ", максимальная скорось: " + bus.getMaxSpeed()+" Можно заправлять бензином " +
                 "или дизелем "+bus.getFuelPercentage()+"%");*/
 
-        Mechanic<Car> dima = new Mechanic<Car>("Дима", "ООО Светло", " Седан");
+        Mechanic<Car> dima = new Mechanic<Car>();
         Sponsor vasichkin = new Sponsor("Васичкин", 700);
         Sponsor solnishko = new Sponsor("ООО Солнышко", 700000);
 
 
         Car audi2 = new Car(" Audi", " A-8", TypeOfBody.HACHBACK, 4, true);
         audi2.AddDriver(new DriverB("Василий", true, 2));
-        audi2.AddMechanic(dima);
+
         audi2.AddSponsor(vasichkin);
 
         Car audi3 = new Car(" Audi", " A-10", TypeOfBody.COMPARTMENT, 2, true);
@@ -93,10 +95,10 @@ public class Main {
         Truck kamaz3 = new Truck(" Камаз", " к1000", 10, Weigth.N1, true);
         Truck kamaz4 = new Truck(" Камаз", " A-100", 35, Weigth.N1, true);
         Truck kamaz5 = new Truck(" Ока", " A-100", 100, Weigth.N2, true);
-        Bus a154 = new Bus(" BMW", " К200", 12, Capasity.BIG, true);
-        Bus b100 = new Bus(" BMW", " трамвайчик", 10, Capasity.SMALL, true);
-        Bus c444 = new Bus(" BMW", " к300", 6, Capasity.BIG, true);
-        Bus d478 = new Bus(" Зил", " вездеход", 90, Capasity.SMALL, true);
+        Bus a154 = new Bus(" BMW", " К200", SMALL, true);
+        Bus b100 = new Bus(" BMW", " трамвайчик", BIG, true);
+        Bus c444 = new Bus(" BMW", " к300", BIG, true);
+        Bus d478 = new Bus(" Зил", " вездеход", ESPECIALLY_BIG, true);
 
 
         DriverB vasiliy = new DriverB("Василий", true, 2);

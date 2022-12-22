@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public class Sponsor {
     private final String sponsorName;
     private final int amount;
@@ -25,5 +27,18 @@ public class Sponsor {
     @Override
     public String toString() {
         return "Название " + sponsorName + ", сумма поддержки " + amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Sponsor)) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return getAmount() == sponsor.getAmount() && Objects.equals(getSponsorName(), sponsor.getSponsorName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSponsorName(), getAmount());
     }
 }
